@@ -1,0 +1,18 @@
+import KategorieKursow from "@/components/KategorieKursow";
+
+export default function Admin() {
+	return (
+		<div className="min-h-screen bg-white">
+			<main className="mx-auto max-w-5xl px-4 py-8">
+				<h1 className="text-2xl font-semibold text-gray-900">
+					Panel administratora
+				</h1>
+				<p className="mt-2 text-gray-600">Ta strona jest w przygotowaniu.</p>
+
+				<div className="mt-6">
+					<KategorieKursow />
+				</div>
+			</main>
+		</div>
+	);
+}
