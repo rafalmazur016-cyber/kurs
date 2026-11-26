@@ -9,6 +9,7 @@ import authRouter from './routes/auth.js'
 import profileRouter from './routes/profile.js'
 import coursesRouter from './routes/courses.js'
 import categoriesRouter from './routes/categories.js'
+import adminRouter from './routes/admin.js'
 
 const app = express();
 const PORT = process.env.BACKEND_PORT;
@@ -26,6 +27,7 @@ app.use('/api/profile', profileRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/courses', coursesRouter)
 app.use('/api/categories', categoriesRouter)
+app.use('/api/admin', adminRouter)
 app.get('/healthz', (_, res) => {
   res.status(200).send("ok");
 });
