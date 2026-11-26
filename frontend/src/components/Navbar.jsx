@@ -19,7 +19,25 @@ export default function Navbar() {
 						Katalog kursów
 					</Link>
 
-					{!user?.isAdmin && (
+					{!user && (
+						<Link
+							to="/logowanie"
+							className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+						>
+							Zaloguj się
+						</Link>
+					)}
+
+					{user?.isAdmin && (
+						<Link
+							to="/admin"
+							className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+						>
+							Panel administratora
+						</Link>
+					)}
+
+					{user && !user.isAdmin && (
 						<>
 							<Link
 								to="/moje-kursy"
@@ -33,14 +51,17 @@ export default function Navbar() {
 							>
 								Profil
 							</Link>
-							<button
-								type="button"
-								onClick={logout}
-								className="cursor-pointer text-sm font-medium text-gray-600 transition-colors hover:text-red-600"
-							>
-								Wyloguj
-							</button>
 						</>
+					)}
+
+					{user && (
+						<button
+							type="button"
+							onClick={logout}
+							className="cursor-pointer text-sm font-medium text-gray-600 transition-colors hover:text-red-600"
+						>
+							Wyloguj
+						</button>
 					)}
 				</div>
 			</nav>

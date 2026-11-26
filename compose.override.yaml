@@ -1,0 +1,4 @@
+services:
+  backend:
+    environment:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"

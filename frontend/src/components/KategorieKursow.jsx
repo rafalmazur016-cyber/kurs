@@ -75,7 +75,7 @@ export default function KategorieKursow() {
 	}
 
 	return (
-		<section className="rounded-xl border border-gray-200 p-6">
+		<section>
 			<h2 className="text-lg font-semibold text-gray-900">Kategorie kursów</h2>
 
 			{error && (
