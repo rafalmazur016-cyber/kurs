@@ -39,3 +39,24 @@ export async function getReportById(id) {
     { id }
   );
 }
+
+export async function listAllReports() {
+  return query(
+    `SELECT z.id_zgloszenie, z.temat, z.tresc, z.data_zgloszenia, z.czy_archiwalne,
+            u.nazwa AS zglaszajacy, u.email
+     FROM zgloszenia z
+     JOIN uzytkownicy u ON u.id_uzytkownik = z.id_zglaszajacy
+     ORDER BY z.czy_archiwalne, z.data_zgloszenia DESC`
+  );
+}
+
+export async function archiveReport(id) {
+  const result = await query(
+    `UPDATE zgloszenia
+     SET czy_archiwalne = 1
+     WHERE id_zgloszenie = :id`,
+    { id }
+  );
+
+  return result.affectedRows > 0;
+}

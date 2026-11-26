@@ -146,3 +146,14 @@ export async function listAdmins() {
      ORDER BY nazwa`
   );
 }
+
+export async function listAllUsers() {
+  return query(
+    `SELECT u.id_uzytkownik, u.nazwa, u.email, u.imie, u.nazwisko, u.czy_admin,
+            COUNT(k.id_kurs) AS ile_kursow
+     FROM uzytkownicy u
+     LEFT JOIN kursy k ON k.autor = u.id_uzytkownik
+     GROUP BY u.id_uzytkownik, u.nazwa, u.email, u.imie, u.nazwisko, u.czy_admin
+     ORDER BY u.czy_admin DESC, u.nazwa`
+  );
+}
